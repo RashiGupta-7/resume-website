@@ -1,1 +1,152 @@
-styles
+/* Root Variables */
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #1c1c1c;
+  --muted: #666;
+  --accent: #0b5cff;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Layout */
+.container {
+  max-width: 980px;
+  margin: auto;
+  padding: 30px;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(180deg, #fff, #f7f9fc);
+  padding: 50px 0;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.cta {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn.outline {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+}
+
+.btn.ghost {
+  color: #333;
+}
+
+/* Hero right box */
+.hero-right {
+  width: 260px;
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.hero-right ul {
+  margin-top: 10px;
+  list-style: none;
+  color: var(--muted);
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  padding: 24px;
+  margin-top: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Chips */
+.chips span {
+  display: inline-block;
+  background: #eef2f7;
+  padding: 6px 10px;
+  border-radius: 50px;
+  font-size: 13px;
+  margin: 6px 6px 0 0;
+}
+
+/* Experience */
+.job { margin-top: 15px; }
+.job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date { color: var(--muted); }
+
+/* Flash Messages */
+.flash {
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.flash.success { background: #e8fff1; color: #0f7b3a; }
+.flash.error { background: #ffe7e7; color: #b60000; }
+.flash.warning { background: #fff6d8; color: #8a6500; }
+
+/* Contact Form */
+.contact-form label {
+  display: block;
+  margin-top: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d8d8d8;
+  margin-top: 5px;
+  font-size: 15px;
+}
