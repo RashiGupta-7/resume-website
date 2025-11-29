@@ -1,140 +1,125 @@
-/* ----------------- Base Variables ----------------- */
+/* Corporate vibrant palette — electric blue, soft pink and lime accent */
 :root{
-  --bg:#f4f6f9;
+  --bg:#f5f8fb;
   --card:#ffffff;
-  --text:#1c1c1c;
-  --muted:#666;
-  --accent:#0b5cff;
+  --text:#111827;
+  --muted:#6b7280;
+  --accent:#0b6cf5;     /* electric blue */
+  --accent-2:#ff4db8;   /* soft pink */
+  --accent-3:#9be34a;   /* lime highlight */
   --radius:14px;
-  --shadow: 0 8px 24px rgba(0,0,0,0.05);
-  --terminal-bg:#0b0f14;
-  --terminal-text:#cfeefb;
+  --shadow: 0 10px 30px rgba(2,6,23,0.06);
+  --terminal-bg:#031426;
+  --terminal-text:#bfefff;
 }
 
-/* Dark theme variables override */
+/* dark mode tweaks */
 body[data-theme="dark"]{
-  --bg: #0b1220;
-  --card: #071026;
-  --text: #e6eef8;
-  --muted:#9db3c9;
-  --accent:#4db5ff;
-  --terminal-bg:#00111a;
+  --bg:#06142a;
+  --card: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  --text:#e6f2ff;
+  --muted:#9fb3c7;
+  --accent:#38a3ff;
+  --accent-2:#ff74b3;
+  --accent-3:#b7ff66;
+  --terminal-bg: linear-gradient(90deg,#031a2a,#00121a 60%);
   --terminal-text:#b8f0ff;
-  background: radial-gradient(circle at 10% 10%, rgba(77,181,255,0.03), transparent 10%), var(--bg);
+  background: radial-gradient(circle at 10% 10%, rgba(11,108,245,0.02), transparent 10%), #031423;
 }
 
-/* ----------------- Reset & Layout ----------------- */
+/* Reset / layout */
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family: "Inter", Arial, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
-
+body{font-family:Inter, Arial, sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
 .container{max-width:980px;margin:0 auto;padding:28px}
 
-/* ----------------- HERO ----------------- */
-.hero{
-  background: linear-gradient(180deg, #fff, rgba(0,0,0,0.02));
-  padding:44px 0;
-}
+/* HERO */
+.hero{padding:44px 0;background: linear-gradient(180deg, #fff, rgba(0,0,0,0.02))}
 .hero-content{display:flex;gap:20px;align-items:flex-start;justify-content:space-between}
-.title{font-size:40px;font-weight:700}
+.title{font-size:40px;font-weight:800;letter-spacing:-0.4px}
 .subtitle{color:var(--muted);margin-top:6px;font-size:16px}
 
-/* CTA and buttons */
+/* CTA buttons */
 .cta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
 .btn{padding:10px 16px;border-radius:8px;font-weight:600;text-decoration:none;cursor:pointer;border:none}
-.btn.primary{background:var(--accent);color:white}
-.btn.outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#2aa0ff);color:white;box-shadow:0 8px 22px rgba(11,108,245,0.12)}
+.btn.primary:hover{transform:translateY(-2px)}
+.btn.outline{background:transparent;border:1px solid rgba(11,108,245,0.14);color:var(--accent)}
 .btn.ghost{background:transparent;color:var(--text)}
 
-/* Hero right stack */
-.hero-right{width:260px;background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
-.hero-right ul{list-style:none;margin-top:10px;color:var(--muted);font-size:14px}
+/* HERO RIGHT */
+.hero-right{width:320px;background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+.stack-list{list-style:none;margin-top:10px;color:var(--muted);font-size:14px;line-height:1.5}
 
-/* ----------------- CARD ----------------- */
-.card{
-  background:var(--card);
-  padding:22px;
-  margin-top:22px;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.card:hover{ transform: translateY(-3px) }
+/* CARD base */
+.card{background:var(--card);padding:22px;margin-top:22px;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-3px)}
 
-/* Chips */
-.chips span{
-  display:inline-block;background:#eef2f7;padding:7px 10px;border-radius:999px;font-size:13px;margin:6px 6px 0 0;
-}
+/* CHIPS */
+.chips span{display:inline-block;background:rgba(11,108,245,0.06);color:var(--text);padding:7px 10px;border-radius:999px;font-size:13px;margin:6px 6px 0 0}
+body[data-theme="dark"] .chips span{background:rgba(56,163,255,0.06);color:var(--text)}
 
-/* ----------------- EXPERIENCE ----------------- */
+/* JOB & LOGO */
 .job{margin-top:14px;position:relative;padding-bottom:8px}
 .job-head{display:flex;justify-content:space-between;align-items:center}
 .date{color:var(--muted);font-size:13px}
 
-/* Hover micro-lift for job */
+/* job with logo layout */
+.job-with-logo .job-head{display:flex;align-items:center;gap:12px}
+.job-left{display:flex;gap:12px;align-items:center}
+.company-logo{width:56px;height:56px;object-fit:contain;border-radius:8px;background:transparent;padding:4px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+
+/* bullets spacing */
+ul{margin-left:20px}
+
+/* hover micro-lift */
 .job:hover{transform:translateY(-4px);transition:transform .18s ease}
 
-/* ----------------- FLASH ----------------- */
+/* FLASH */
 .flash-list{margin-top:10px}
 .flash{padding:12px;border-radius:10px;margin-bottom:10px;font-weight:600}
 .flash.success{background:#e8fff1;color:#0f7b3a}
 .flash.error{background:#ffe7e7;color:#b60000}
 .flash.warning{background:#fff6d8;color:#8a6500}
 
-/* ----------------- CONTACT FORM ----------------- */
+/* CONTACT */
 .contact-form label{display:block;margin-top:12px;font-weight:600}
 .contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #d8d8d8;margin-top:6px;font-size:15px;background:transparent}
 .form-actions{display:flex;gap:10px;margin-top:12px}
-
-/* Note and small text */
 .note{margin-top:12px;color:var(--muted);font-size:14px}
 
-/* ----------------- FOOTER ----------------- */
+/* FOOTER */
 .footer{text-align:center;padding:28px;color:var(--muted);margin-top:30px}
 
-/* ----------------- HOVER TYPING ----------------- */
-.hover-typing{
-  max-width:640px;margin-top:10px;padding:10px 14px;border-radius:10px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;font-size:13px;
-  color:var(--text);
-  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0.02));
-  border:1px solid rgba(0,0,0,0.04);
-  opacity:0;transform:translateY(6px);transition:opacity .22s ease, transform .22s ease;pointer-events:none;
-}
+/* HOVER TYPING */
+.hover-typing{max-width:640px;margin-top:10px;padding:10px 14px;border-radius:10px;font-family:ui-monospace,monospace;font-size:13px;color:var(--text);background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(255,255,255,0.02));border:1px solid rgba(0,0,0,0.04);opacity:0;transform:translateY(6px);transition:opacity .22s ease,transform .22s ease;pointer-events:none}
 .hover-typing.visible{opacity:1;transform:none}
+body[data-theme="dark"] .hover-typing{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04); color:var(--text)}
 
-/* Dark theme tweak for hover box */
-body[data-theme="dark"] .hover-typing{
-  background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04);
-  color:var(--text);
-}
-
-/* ----------------- TERMINAL CARD ----------------- */
-.terminal-card{
-  margin-top:16px;border-radius:12px;overflow:hidden;max-width:720px;transition:transform .35s ease, opacity .35s ease;
-  opacity:0;transform:translateY(10px);box-shadow:0 14px 30px rgba(15,23,42,0.07);
-  background: linear-gradient(180deg, rgba(15,23,42,0.02), rgba(255,255,255,0.02));
-}
+/* TERMINAL & SPARKLINE */
+.terminal-card{margin-top:16px;border-radius:12px;overflow:hidden;max-width:720px;transition:transform .35s ease,opacity .35s ease;opacity:0;transform:translateY(10px);box-shadow:0 18px 40px rgba(2,6,23,0.18);background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.02))}
 .terminal-card.reveal{opacity:1;transform:none}
-.terminal-header{display:flex;align-items:center;gap:8px;padding:8px 12px;background:linear-gradient(90deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));border-bottom:1px solid rgba(0,0,0,0.04)}
+.terminal-header{display:flex;align-items:center;gap:8px;padding:8px 12px;background:linear-gradient(90deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));border-bottom:1px solid rgba(0,0,0,0.04)}
 .terminal-header .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 .terminal-header .dot.red{background:#ff5f56}
 .terminal-header .dot.yellow{background:#ffbd2e}
 .terminal-header .dot.green{background:#27c93f}
 .terminal-header .term-title{margin-left:auto;color:var(--muted);font-size:12px;font-weight:700;opacity:0.9}
 
-.term-body{padding:14px;font-family:ui-monospace, Roboto Mono, monospace;margin:0;font-size:13px;color:var(--terminal-text);background:linear-gradient(180deg,var(--terminal-bg), rgba(0,0,0,0.02))}
+/* Sparkline wrap */
+.sparkline-wrap{display:flex;gap:12px;align-items:center;padding:14px;background:linear-gradient(180deg, rgba(1,20,30,0.02), rgba(255,255,255,0.01))}
+.sparkline{width:240px;height:60px;display:block}
+.sparkline-caption{font-size:13px;color:var(--muted)}
 
-/* dark theme terminal tweak */
-body[data-theme="dark"] .term-body{color:var(--terminal-text);background:linear-gradient(180deg,var(--terminal-bg), #001217)}
+/* vibrant sparkline stroke adjustments for dark */
+body[data-theme="dark"] .sparkline polyline{stroke:var(--accent)}
+body[data-theme="dark"] .sparkline circle{stroke:#fff}
 
-/* ----------------- SMALL HELPERS & RESPONSIVE ----------------- */
+/* micro interactions */
+.card{transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-3px)}
+.job:hover{transform:translateY(-4px)}
+
+/* responsive */
 @media (max-width:900px){
   .hero-content{flex-direction:column}
   .hero-right{width:100%}
@@ -142,5 +127,5 @@ body[data-theme="dark"] .term-body{color:var(--terminal-text);background:linear-
   .terminal-card{max-width:100%}
 }
 
-/* small accessibility focus styles */
-a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(11,92,255,0.18);outline-offset:3px}
+/* focus */
+a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(11,108,245,0.14);outline-offset:3px}

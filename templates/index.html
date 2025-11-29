@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rashi Gupta — Data Engineer</title>
   <meta name="description" content="Rashi Gupta — Data Engineer. GCP, Python, SQL, Airflow. Hire me." />
-  <!-- Correct Flask static path -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-  <!-- HERO SECTION -->
   <header class="hero">
     <div class="container hero-content">
 
@@ -23,30 +21,28 @@
           <a class="btn primary" href="/Resume-Rashi_Gupta.pdf" download>Download Resume</a>
           <a class="btn outline" href="https://linkedin.com/in/rashigupta07" target="_blank">LinkedIn</a>
           <a class="btn ghost" href="#contact">Contact</a>
-
-          <!-- Theme toggle -->
           <button id="themeToggle" class="btn outline" type="button" aria-pressed="false">Dark</button>
         </div>
       </div>
 
       <aside class="hero-right" aria-labelledby="tech-heading">
         <h4 id="tech-heading">Tech Stack</h4>
-        <ul>
+        <ul class="stack-list">
           <li>GCP (BigQuery, Composer, GCS)</li>
-          <li>Apache Airflow</li>
+          <li>Apache Airflow / Composer</li>
+          <li>Prophecy (data ops)</li>
           <li>Python • SQL • Unix</li>
-          <li>Control-M • Juniper • Jenkins • Git</li>
+          <li>ETL / ELT • Data Modeling • Data Quality</li>
+          <li>Juniper • Control-M • Jenkins • Git</li>
+          <li>Docker • Cloud Run • CI/CD</li>
         </ul>
       </aside>
 
     </div>
   </header>
 
-
-  <!-- MAIN CONTENT -->
   <main class="container">
 
-    <!-- SUMMARY -->
     <section class="card" id="summary">
       <h2>Professional Summary</h2>
       <p>
@@ -58,66 +54,131 @@
 
       <h3>Core Skills</h3>
       <div class="chips" aria-hidden="false">
-        <span>GCP</span>
-        <span>BigQuery</span>
-        <span>Composer (Airflow)</span>
-        <span>Python</span>
-        <span>SQL</span>
-        <span>ETL/ELT</span>
-        <span>Jenkins</span>
-        <span>Git</span>
+        <span>GCP</span><span>BigQuery</span><span>Composer</span><span>Prophecy</span>
+        <span>Python</span><span>SQL</span><span>Airflow</span><span>Juniper</span>
+        <span>Control-M</span><span>ETL/ELT</span><span>Docker</span>
       </div>
     </section>
 
 
-    <!-- EXPERIENCE -->
     <section class="card" id="experience">
       <h2>Experience</h2>
 
-      <div class="job" role="article">
+      <!-- HSBC card with inline SVG logo -->
+      <div class="job job-with-logo" role="article">
         <div class="job-head">
-          <strong>HSBC India — Data Engineer</strong>
-          <span class="date">Aug 2023 — Present</span>
+          <div class="job-left">
+            <!-- Inline HSBC SVG logo (simple mark) -->
+            <svg class="company-logo" viewBox="0 0 200 200" aria-hidden="true" role="img">
+              <defs>
+                <linearGradient id="hsbcGrad" x1="0" x2="1">
+                  <stop offset="0" stop-color="#ff3b3b"/>
+                  <stop offset="1" stop-color="#d00000"/>
+                </linearGradient>
+              </defs>
+              <rect fill="#fff" width="200" height="200" rx="16"/>
+              <g transform="translate(20,20) scale(0.8)">
+                <polygon points="50,0 100,50 50,100 0,50" fill="url(#hsbcGrad)"/>
+                <polygon points="150,0 100,50 150,100 200,50" fill="url(#hsbcGrad)"/>
+                <rect x="60" y="30" width="80" height="40" fill="#fff"/>
+                <rect x="60" y="60" width="80" height="40" fill="#fff"/>
+              </g>
+            </svg>
+
+            <div>
+              <strong>HSBC India — Data Engineer</strong>
+              <div class="date">Aug 2023 — Present</div>
+            </div>
+          </div>
         </div>
 
         <ul>
           <li>Migrated 200+ on-prem pipelines to Airflow on GCP; improved delivery speed and accuracy.</li>
-          <li>Led a 4-member team to build archival & historical load frameworks with deduplication.</li>
+          <li>Designed and implemented archival & historical load frameworks with deduplication and column masking.</li>
           <li>Built SQL analytics for Apple Pay insights, improving fraud detection by ~15%.</li>
+          <li>Implemented Prophecy-driven data flows for test environment parity and faster dev cycles.</li>
+          <li>Introduced pipeline monitoring & alerting (Control-M → Airflow) to meet SLA targets.</li>
+          <li>Mentored 2 junior engineers and conducted code reviews and onboarding sessions.</li>
+          <li>Worked with Juniper automation for secure file transfers and operational playbooks.</li>
+          <li>Reduced end-to-end data latency for daily reports by ~30% through parallelized ingestion.</li>
         </ul>
 
-        <!-- Hover-typing box (populated by JS) -->
         <div class="hover-typing" aria-hidden="true"></div>
 
-        <!-- Terminal-style data preview to give a data-engineer vibe -->
+        <!-- Terminal card with SVG sparkline (inline) -->
         <div class="terminal-card" role="region" aria-label="Data preview">
           <div class="terminal-header">
             <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-            <span class="term-title">data-preview.sql</span>
+            <span class="term-title">last_30d_events (top users)</span>
           </div>
-          <pre class="term-body">SELECT user_id, COUNT(*) AS events
-FROM events_table
-WHERE event_date &gt; DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)
-GROUP BY user_id
-ORDER BY events DESC
-LIMIT 5;</pre>
+
+          <!-- Sparkline SVG: simple, accessible, no JS required -->
+          <div class="sparkline-wrap" role="img" aria-label="Sparkline of events over last 30 days">
+            <svg class="sparkline" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
+              <!-- gradient fill under the line -->
+              <defs>
+                <linearGradient id="sparkGrad" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#4db5ff" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#ff6fc0" stop-opacity="0.05"/>
+                </linearGradient>
+              </defs>
+
+              <!-- area under spark -->
+              <path d="M0,50 L20,42 L40,45 L60,30 L80,28 L100,24 L120,30 L140,20 L160,28 L180,18 L200,10 L200,60 L0,60 Z"
+                    fill="url(#sparkGrad)" opacity="0.95"></path>
+
+              <!-- sparkline stroke -->
+              <polyline points="0,50 20,42 40,45 60,30 80,28 100,24 120,30 140,20 160,28 180,18 200,10"
+                        fill="none" stroke="#4db5ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+
+              <!-- dots for top 3 users (decorative) -->
+              <circle cx="100" cy="24" r="3.5" fill="#fff" stroke="#004b7f" stroke-width="1.5"></circle>
+              <circle cx="140" cy="20" r="3.5" fill="#fff" stroke="#ff6fc0" stroke-width="1.5"></circle>
+              <circle cx="200" cy="10" r="3.5" fill="#fff" stroke="#9bff6f" stroke-width="1.5"></circle>
+            </svg>
+
+            <div class="sparkline-caption">
+              <strong>Top users</strong> — counts aggregated; sparkline shows recent trend (sample data).
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="job" role="article">
+      <!-- KPMG card with inline SVG logo -->
+      <div class="job job-with-logo" role="article">
         <div class="job-head">
-          <strong>KPMG Australia — Data Analyst Intern</strong>
-          <span class="date">Feb 2021 — Dec 2022</span>
+          <div class="job-left">
+            <!-- Inline KPMG SVG (simplified placeholder mark) -->
+            <svg class="company-logo" viewBox="0 0 200 200" aria-hidden="true" role="img">
+              <rect width="200" height="200" rx="16" fill="#fff"/>
+              <g transform="translate(24,46) scale(0.8)">
+                <rect x="0" y="0" width="38" height="20" fill="#00338d"></rect>
+                <rect x="44" y="0" width="38" height="20" fill="#00338d"></rect>
+                <rect x="88" y="0" width="38" height="20" fill="#00338d"></rect>
+                <rect x="132" y="0" width="38" height="20" fill="#00338d"></rect>
+
+                <rect x="0" y="28" width="38" height="20" fill="#0057b8"></rect>
+                <rect x="44" y="28" width="38" height="20" fill="#0057b8"></rect>
+                <rect x="88" y="28" width="38" height="20" fill="#0057b8"></rect>
+                <rect x="132" y="28" width="38" height="20" fill="#0057b8"></rect>
+              </g>
+            </svg>
+
+            <div>
+              <strong>KPMG Australia — Data Analyst Intern</strong>
+              <div class="date">Feb 2021 — Dec 2022</div>
+            </div>
+          </div>
         </div>
         <ul>
           <li>Automated data validation & transformation using Python, cutting manual processing by 40%.</li>
           <li>Performed data quality assessments and statistical analysis to extract actionable insights.</li>
+          <li>Built sample data pipelines and improved documentation for handoffs to delivery teams.</li>
         </ul>
       </div>
     </section>
 
 
-    <!-- ACHIEVEMENTS -->
     <section class="card" id="achievements">
       <h2>Achievements</h2>
       <ul>
@@ -135,11 +196,9 @@ LIMIT 5;</pre>
     </section>
 
 
-    <!-- CONTACT SECTION -->
     <section id="contact" class="card">
       <h2>Contact</h2>
 
-      <!-- Flash Messages -->
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
           <div class="flash-list" role="status" aria-live="polite">
@@ -181,15 +240,12 @@ LIMIT 5;</pre>
 
   </main>
 
-
-  <!-- FOOTER -->
   <footer class="footer">
     <p>© 2025 • Built by Rashi Gupta</p>
   </footer>
 
-  <!-- Scripts: theme toggle, hover typewriter, terminal reveal -->
   <script>
-  /* THEME TOGGLE (persist in localStorage) */
+  /* THEME TOGGLE */
   (function(){
     const toggle = document.getElementById('themeToggle');
     const body = document.body;
@@ -223,7 +279,7 @@ LIMIT 5;</pre>
     const message = "Migrated 200+ pipelines to Airflow on GCP — improved delivery reliability & reduced failures.";
     let typingTimer = null;
 
-    function typeText(el, text, speed=30) {
+    function typeText(el, text, speed=25) {
       el.textContent = "";
       let i = 0;
       typingTimer = setInterval(() => {
@@ -246,7 +302,7 @@ LIMIT 5;</pre>
     });
   })();
 
-  /* Terminal reveal when scrolled into view */
+  /* Terminal reveal */
   (function(){
     const t = document.querySelector('.terminal-card');
     if(!t) return;
