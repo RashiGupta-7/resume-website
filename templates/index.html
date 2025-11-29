@@ -1,11 +1,12 @@
-index<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rashi Gupta — Data Engineer</title>
 
-  <link rel="stylesheet" href="/static/style.css" />
+  <!-- IMPORTANT: Correct Flask static path -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
@@ -77,3 +78,97 @@ index<!doctype html>
         </div>
         <ul>
           <li>Migrated 200+ on-prem pipelines to Airflow on GCP.</li>
+          <li>Led a 4-member team to build archival & historical load frameworks.</li>
+          <li>Built SQL analytics for Apple Pay, improving fraud detection by ~15%.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <strong>KPMG Australia — Data Analyst Intern</strong>
+          <span class="date">Feb 2021 — Dec 2022</span>
+        </div>
+        <ul>
+          <li>Automated data validation & transformation using Python.</li>
+          <li>Cut manual processing time by 40%.</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ACHIEVEMENTS -->
+    <section class="card">
+      <h2>Achievements</h2>
+      <ul>
+        <li>Employee of the Month — Engineering Excellence.</li>
+        <li>Employee of the Month — Business Delivery.</li>
+        <li>Automated major Python workflows at KPMG.</li>
+      </ul>
+
+      <h3>Certifications</h3>
+      <ul>
+        <li>Google Cloud Infrastructure and App Modernization (LinkedIn)</li>
+        <li>SQL for Data Science (LinkedIn)</li>
+        <li>GCP Professional Data Engineer — in progress</li>
+      </ul>
+    </section>
+
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+
+      <!-- FLASH MESSAGES -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-list">
+            {% for category, message in messages %}
+              <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <p><strong>Email:</strong>
+        <a href="mailto:rashigupta.work07@gmail.com">
+          rashigupta.work07@gmail.com
+        </a>
+      </p>
+
+      <p><strong>LinkedIn:</strong>
+        <a href="https://linkedin.com/in/rashigupta07" target="_blank">
+          linkedin.com/in/rashigupta07
+        </a>
+      </p>
+
+      <form action="/contact" method="POST" class="contact-form">
+        <label>Your Name
+          <input type="text" name="name" required />
+        </label>
+
+        <label>Your Email
+          <input type="email" name="email" required />
+        </label>
+
+        <label>Message
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button class="btn primary" type="submit">Send Message</button>
+          <a class="btn outline" href="mailto:rashigupta.work07@gmail.com">Email Directly</a>
+        </div>
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 • Built by Rashi Gupta</p>
+  </footer>
+
+</body>
+</html>
