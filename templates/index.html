@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rashi Gupta — Data Engineer</title>
-
-  <!-- IMPORTANT: Correct Flask static path -->
+  <meta name="description" content="Rashi Gupta — Data Engineer. GCP, Python, SQL, Airflow. Hire me." />
+  <!-- Correct Flask static path -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -23,11 +23,14 @@
           <a class="btn primary" href="/Resume-Rashi_Gupta.pdf" download>Download Resume</a>
           <a class="btn outline" href="https://linkedin.com/in/rashigupta07" target="_blank">LinkedIn</a>
           <a class="btn ghost" href="#contact">Contact</a>
+
+          <!-- Theme toggle -->
+          <button id="themeToggle" class="btn outline" type="button" aria-pressed="false">Dark</button>
         </div>
       </div>
 
-      <aside class="hero-right">
-        <h4>Tech Stack</h4>
+      <aside class="hero-right" aria-labelledby="tech-heading">
+        <h4 id="tech-heading">Tech Stack</h4>
         <ul>
           <li>GCP (BigQuery, Composer, GCS)</li>
           <li>Apache Airflow</li>
@@ -44,7 +47,7 @@
   <main class="container">
 
     <!-- SUMMARY -->
-    <section class="card">
+    <section class="card" id="summary">
       <h2>Professional Summary</h2>
       <p>
         Software & Data Engineer with 2+ years of experience designing, developing,
@@ -54,7 +57,7 @@
       </p>
 
       <h3>Core Skills</h3>
-      <div class="chips">
+      <div class="chips" aria-hidden="false">
         <span>GCP</span>
         <span>BigQuery</span>
         <span>Composer (Airflow)</span>
@@ -68,41 +71,59 @@
 
 
     <!-- EXPERIENCE -->
-    <section class="card">
+    <section class="card" id="experience">
       <h2>Experience</h2>
 
-      <div class="job">
+      <div class="job" role="article">
         <div class="job-head">
           <strong>HSBC India — Data Engineer</strong>
           <span class="date">Aug 2023 — Present</span>
         </div>
+
         <ul>
-          <li>Migrated 200+ on-prem pipelines to Airflow on GCP.</li>
-          <li>Led a 4-member team to build archival & historical load frameworks.</li>
-          <li>Built SQL analytics for Apple Pay, improving fraud detection by ~15%.</li>
+          <li>Migrated 200+ on-prem pipelines to Airflow on GCP; improved delivery speed and accuracy.</li>
+          <li>Led a 4-member team to build archival & historical load frameworks with deduplication.</li>
+          <li>Built SQL analytics for Apple Pay insights, improving fraud detection by ~15%.</li>
         </ul>
+
+        <!-- Hover-typing box (populated by JS) -->
+        <div class="hover-typing" aria-hidden="true"></div>
+
+        <!-- Terminal-style data preview to give a data-engineer vibe -->
+        <div class="terminal-card" role="region" aria-label="Data preview">
+          <div class="terminal-header">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="term-title">data-preview.sql</span>
+          </div>
+          <pre class="term-body">SELECT user_id, COUNT(*) AS events
+FROM events_table
+WHERE event_date &gt; DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)
+GROUP BY user_id
+ORDER BY events DESC
+LIMIT 5;</pre>
+        </div>
       </div>
 
-      <div class="job">
+      <div class="job" role="article">
         <div class="job-head">
           <strong>KPMG Australia — Data Analyst Intern</strong>
           <span class="date">Feb 2021 — Dec 2022</span>
         </div>
         <ul>
-          <li>Automated data validation & transformation using Python.</li>
-          <li>Cut manual processing time by 40%.</li>
+          <li>Automated data validation & transformation using Python, cutting manual processing by 40%.</li>
+          <li>Performed data quality assessments and statistical analysis to extract actionable insights.</li>
         </ul>
       </div>
     </section>
 
 
     <!-- ACHIEVEMENTS -->
-    <section class="card">
+    <section class="card" id="achievements">
       <h2>Achievements</h2>
       <ul>
-        <li>Employee of the Month — Engineering Excellence.</li>
-        <li>Employee of the Month — Business Delivery.</li>
-        <li>Automated major Python workflows at KPMG.</li>
+        <li>Employee of the Month — Engineering Excellence (automation & reliability).</li>
+        <li>Employee of the Month — Business Delivery (successful production releases).</li>
+        <li>Reduced manual processing time by 40% via Python automation at KPMG.</li>
       </ul>
 
       <h3>Certifications</h3>
@@ -118,10 +139,10 @@
     <section id="contact" class="card">
       <h2>Contact</h2>
 
-      <!-- FLASH MESSAGES -->
+      <!-- Flash Messages -->
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-          <div class="flash-list">
+          <div class="flash-list" role="status" aria-live="polite">
             {% for category, message in messages %}
               <div class="flash {{ category }}">{{ message }}</div>
             {% endfor %}
@@ -129,19 +150,11 @@
         {% endif %}
       {% endwith %}
 
-      <p><strong>Email:</strong>
-        <a href="mailto:rashigupta.work07@gmail.com">
-          rashigupta.work07@gmail.com
-        </a>
-      </p>
+      <p><strong>Based in:</strong> Pune, Maharashtra, India</p>
+      <p><strong>Email:</strong> <a href="mailto:rashigupta.work07@gmail.com">rashigupta.work07@gmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/rashigupta07" target="_blank">linkedin.com/in/rashigupta07</a></p>
 
-      <p><strong>LinkedIn:</strong>
-        <a href="https://linkedin.com/in/rashigupta07" target="_blank">
-          linkedin.com/in/rashigupta07
-        </a>
-      </p>
-
-      <form action="/contact" method="POST" class="contact-form">
+      <form action="/contact" method="POST" class="contact-form" autocomplete="on" novalidate>
         <label>Your Name
           <input type="text" name="name" required />
         </label>
@@ -160,6 +173,10 @@
         </div>
       </form>
 
+      <div class="note">
+        <strong>Prefer recruiters to reach out?</strong>
+        <p>Drop an email or connect on LinkedIn — I reply to recruiter messages promptly.</p>
+      </div>
     </section>
 
   </main>
@@ -169,6 +186,76 @@
   <footer class="footer">
     <p>© 2025 • Built by Rashi Gupta</p>
   </footer>
+
+  <!-- Scripts: theme toggle, hover typewriter, terminal reveal -->
+  <script>
+  /* THEME TOGGLE (persist in localStorage) */
+  (function(){
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const saved = localStorage.getItem('theme') || 'light';
+    body.dataset.theme = saved;
+    toggle.textContent = saved === 'dark' ? 'Light' : 'Dark';
+    toggle.setAttribute('aria-pressed', saved === 'dark');
+
+    toggle.addEventListener('click', () => {
+      const isDark = body.dataset.theme === 'dark';
+      body.dataset.theme = isDark ? 'light' : 'dark';
+      toggle.textContent = isDark ? 'Dark' : 'Light';
+      toggle.setAttribute('aria-pressed', !isDark);
+      localStorage.setItem('theme', body.dataset.theme);
+    });
+  })();
+
+  /* HOVER TYPEWRITER FOR HSBC JOB */
+  (function(){
+    const jobs = Array.from(document.querySelectorAll('.job'));
+    let hsbcJob = null;
+    for (const j of jobs) {
+      if (j.textContent.includes('HSBC India')) { hsbcJob = j; break; }
+    }
+    if (!hsbcJob) return;
+
+    const hoverBox = hsbcJob.querySelector('.hover-typing') || (function(){
+      const d = document.createElement('div'); d.className = 'hover-typing'; hsbcJob.appendChild(d); return d;
+    })();
+
+    const message = "Migrated 200+ pipelines to Airflow on GCP — improved delivery reliability & reduced failures.";
+    let typingTimer = null;
+
+    function typeText(el, text, speed=30) {
+      el.textContent = "";
+      let i = 0;
+      typingTimer = setInterval(() => {
+        el.textContent += text.charAt(i++);
+        if (i >= text.length) clearInterval(typingTimer);
+      }, speed);
+    }
+    function clearTyping(el) {
+      clearInterval(typingTimer);
+      el.textContent = "";
+    }
+
+    hsbcJob.addEventListener('mouseenter', () => {
+      hoverBox.classList.add('visible');
+      typeText(hoverBox, message, 25);
+    });
+    hsbcJob.addEventListener('mouseleave', () => {
+      clearTyping(hoverBox);
+      hoverBox.classList.remove('visible');
+    });
+  })();
+
+  /* Terminal reveal when scrolled into view */
+  (function(){
+    const t = document.querySelector('.terminal-card');
+    if(!t) return;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) t.classList.add('reveal'); });
+    }, {threshold:0.2});
+    io.observe(t);
+  })();
+  </script>
 
 </body>
 </html>
